@@ -29,10 +29,10 @@ const routes = [
     component: () => import('@/views/Categories.vue')
   },
   {
-    path: `/detail-record`,
-    name: `detail-record`,
+    path: `/detail`,
+    name: `detail`,
     meta: {layout: 'main'},
-    component: () => import('@/views/DetailRecord.vue')
+    component: () => import('@/views/Detail.vue')
   },
   {
     path: `/history`,
