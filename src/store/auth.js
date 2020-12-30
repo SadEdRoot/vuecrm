@@ -11,9 +11,10 @@ export default {
         throw e
       }
     },
-    async logout() {
+    async logout({commit}) {
       try {
         await firebase.auth().signOut();
+        await commit('clearInfo');
       } catch (e) {
         console.log(e) //add reaction for user
 
