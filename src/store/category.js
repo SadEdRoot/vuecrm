@@ -11,6 +11,31 @@ export default {
         commit('setErroe', e)
         throw e
       }
+    },
+    async updateCategory({commit, dispatch}, {id, title, limit}) {
+      try {
+        const uid = await dispatch('getUid');
+        await firebase.database().ref(`/users/${uid}/categories`).child(id).update({title, limit});
+
+      } catch(e) {
+        commit('setErroe', e)
+        throw e
+      }
+    },
+    async fetchCategories({commit, dispatch}) {
+      try {
+        const uid = await dispatch('getUid');
+        const categories = (await firebase.database().ref(`/users/${uid}/categories`).once('value')).val() || {};
+
+        return Object.entries(categories).map(([key, value]) => ({
+          id: key,
+          title: value.title,
+          limit: value.limit,
+        }))
+      } catch(e) {
+        commit('setErroe', e)
+        throw e
+      }
     }
   }
 }
