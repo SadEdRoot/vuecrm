@@ -44,7 +44,7 @@
           <span
             class="helper-text invalid"
             v-if="$v.limit.$dirty && !$v.limit.minValue"
-          >Минимальная величина {{$v.limit.$params.minValue.min}}</span>
+          >Минимальное значение {{$v.limit.$params.minValue.min}}</span>
         </div>
 
         <button class="btn waves-effect waves-light" type="submit">
@@ -96,7 +96,8 @@ export default {
   },
   methods: {
     async onSubmit() {
-      if (this.$v.invalid) {
+
+      if (this.$v.$invalid) {
         this.$v.$touch();
         return
       }
