@@ -118,7 +118,7 @@ export default {
   },
   computed: {
     ...mapGetters(['info']),
-    canCrateRecord() {
+    canCreateRecord() {
       if (this.type === 'income') {
         return true
       }
@@ -133,13 +133,14 @@ export default {
         return
       }
 
-      if (this.canCrateRecord) {
+      if (this.canCreateRecord) {
         try {
           const recordData = {
             category: this.category,
             type: this.type,
             amount: this.amount,
-            description: this.description
+            description: this.description,
+            date: new Date().toJSON()
           }
 
           await this. $store.dispatch('createRecord', recordData);
