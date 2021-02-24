@@ -13,12 +13,14 @@
 
     <tbody>
       <tr v-for="(record, idx) of records" :key="record.id">
-        <td>{{(idx + 1) + (page-1) * pageSize}}</td>
-        <td>{{record.amount | currency('RUB')}}</td>
+        <td>{{ idx + 1 + (page - 1) * pageSize }}</td>
+        <td>{{ record.amount | currency('RUB') }}</td>
         <td>{{ record.date | date('datetime') }}</td>
-        <td>{{record.categoryName}}</td>
+        <td>{{ record.categoryName }}</td>
         <td>
-          <span class="white-text badge" :class="[record.typeClass]">{{record.typeText}}</span>
+          <span class="white-text badge" :class="[record.typeClass]">{{
+            record.typeText
+          }}</span>
         </td>
         <td>
           <button
@@ -44,6 +46,6 @@ export default {
     },
     page: Number,
     pageSize: Number,
-  }
-}
+  },
+};
 </script>
