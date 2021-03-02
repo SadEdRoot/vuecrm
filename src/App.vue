@@ -10,6 +10,11 @@
 import EmptyLayout from '@/layouts/EmptyLayout'
 import MainLayout from '@/layouts/MainLayout'
 export default {
+  metaInfo() {
+    return {
+      title: this.$title('ProfileTitle')
+    }
+  },
   computed: {
     layout() {
       return (this.$route.meta.layout || 'empty') + '-layout'
