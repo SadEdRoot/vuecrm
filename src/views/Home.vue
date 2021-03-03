@@ -12,12 +12,12 @@
 
     <div v-else class="row">
       <HomeBill
-        :rates="currency.rates"
+        :rates="currency.conversion_rates"
       />
 
       <HomeCurrency
-        :rates="currency.rates"
-        :date="currency.date"
+        :rates="currency.conversion_rates"
+        :date="currency.time_last_update_unix"
       />
     </div>
   </div>
