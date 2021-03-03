@@ -2,7 +2,7 @@
   <div class="col s12 m6">
     <div>
       <div class="page-subtitle">
-        <h4>Создать</h4>
+        <h4>{{'Create' | localize}}</h4>
       </div>
 
       <form @submit.prevent="onSubmit">
@@ -61,8 +61,6 @@ export default {
   },
   methods: {
     async onSubmit() {
-      console.log('onSubmit');
-      console.log(this.$v.$invalid)
       if (this.$v.$invalid) {
         this.$v.$touch()
         return

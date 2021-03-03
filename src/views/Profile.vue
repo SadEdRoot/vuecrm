@@ -11,7 +11,7 @@
         <small
           class="helper-text invalid"
           v-if="$v.name.$dirty && !$v.name.required"
-        >Введите ваше имя</small>
+        >{{'Yourname' | localize}}</small>
       </div>
 
       <div class="switch">
@@ -24,7 +24,7 @@
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        Обновить
+        {{'Update' | localize}}
         <i class="material-icons right">send</i>
       </button>
     </form>

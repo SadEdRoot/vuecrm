@@ -1,4 +1,7 @@
 {
   "ProfileTitle": "Profile",
-  "Name": "Name"
+  "Name": "Name",
+  "Update": "Update",
+  "Yourname": "Enter your name",
+  "Create": "Create"
 }
