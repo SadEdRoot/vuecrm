@@ -12,7 +12,7 @@ import MainLayout from '@/layouts/MainLayout'
 export default {
   metaInfo() {
     return {
-      title: this.$title('ProfileTitle')
+      title: this.$title('MainPage')
     }
   },
   computed: {

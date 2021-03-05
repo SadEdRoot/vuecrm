@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>История записей</h3>
+      <h3>{{'History_Title' | localize}}</h3>
     </div>
     <Loader v-if="loading" />
 
     <p v-else-if="!records.length" class="center">
-      Записей пока нет. <router-link to="/record">Добавить звпись?</router-link>
+      {{'NoRecords'}}. <router-link to="/record">{{'AddFirst' | localize}}</router-link>
     </p>
 
     <div v-else>
@@ -21,8 +21,8 @@
           v-model="page"
           :page-count="pageCount"
           :click-handler="pageChangeHendler"
-          :prev-text="'Назад'"
-          :next-text="'Вперед'"
+          :prev-text="back"
+          :next-text="forward"
           :container-class="'pagination'"
           :page-class="'waves-effect'"
         />
@@ -36,6 +36,7 @@ import Chart from '../components/Chart';
 import paginationMixin from '../mixins/pagination.mixin';
 import Loader from '../components/app/Loader.vue';
 import HistoryTable from '../components/HistoryTable';
+import localizeFilter from '../filters/localize.filter';
 
 export default {
   name: 'history',
@@ -45,6 +46,19 @@ export default {
     records: [],
     chartData: {},
   }),
+  metaInfo() {
+    return {
+      title: this.$title('History_Title')
+    }
+  },
+  computed: {
+    back() {
+      return localizeFilter('Back')
+    },
+    forward() {
+      return localizeFilter('Forward')
+    }
+  },
   async mounted() {
     this.records = await this.$store.dispatch('fetchRecords');
     const categories = await this.$store.dispatch('fetchCategories');
@@ -95,7 +109,7 @@ export default {
             categoryName: categories.find((c) => c.id === record.category)
               .title,
             typeClass: record.type === 'income' ? 'green' : 'red',
-            typeText: record.type === 'income' ? 'Доход' : 'Расход',
+            typeText: record.type === 'income' ? localizeFilter('Income') : localizeFilter('Outcome'),
           };
         })
       );

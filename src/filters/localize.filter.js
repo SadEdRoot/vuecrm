@@ -9,6 +9,6 @@ const locales = {
 };
 
 export default function localize(key) {
-  const locale = store.getters.info.locale || 'ru-RU';
+  const locale = store.getters.info.locale || 'en-US';
   return locales[locale][key] || `[Localize error]: key ${key} not found`;
 }
